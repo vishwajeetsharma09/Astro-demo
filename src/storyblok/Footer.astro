@@ -1,0 +1,30 @@
+---
+import { storyblokEditable } from '@storyblok/astro'
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+
+
+const { blok } = Astro.props
+console.log(blok);
+
+---
+
+<div
+  {...storyblokEditable(blok)}
+  class='w-full  m-3 p-12 bg-[#f7f6fd] rounded-[5px] text-center'
+>
+  <h3 class='text-2xl text-[#1d243d] font-bold'>{blok.text}</h3>
+  
+  
+  {blok.columns?.map((columnBlok) => {
+    return (
+      <div class="p-4 inline-block">
+        
+
+        <StoryblokComponent blok={columnBlok} />
+      </div>
+    );
+  })}
+
+
+</div>

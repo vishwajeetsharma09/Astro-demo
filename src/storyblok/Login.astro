@@ -1,0 +1,31 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+const { blok } = Astro.props;
+console.log(blok);
+---
+
+<div
+  {...storyblokEditable(blok)}
+  class="p-4 border border-gray-300 rounded-md shadow-md bg-white"
+>
+  <label 
+    class="block mb-2 text-sm font-medium text-gray-700"
+  >
+    {blok.label}
+  </label>
+  <input
+    type={blok.type}
+    placeholder={blok.placeholder}
+    class="w-full px-3 py-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+  />
+</div>
+
+<div class="mt-4">
+  {blok?.contact &&
+    blok?.content.length > 0 &&
+    blok?.content.map((blok) => {
+      return <StoryblokComponent blok={blok} />;
+    })}
+</div>

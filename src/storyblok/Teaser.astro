@@ -1,0 +1,35 @@
+---
+import { storyblokEditable } from '@storyblok/astro'
+// import Button from './Button.astro';
+
+
+
+
+const { blok } = Astro.props
+// console.log(blok);
+
+---
+
+<div class=" m-4 relative w-full h-[500px]">
+  <!-- Background Image -->
+  <img src={blok.image.filename}
+    
+  />
+
+  <!-- Teaser Content -->
+  <div
+    {...storyblokEditable(blok)}
+    class="absolute inset-0 flex flex-col items-center justify-center  text-center"
+  >
+    <!-- Headline -->
+    <h3 class="text-4xl md:text-6xl text-white font-bold mb-6">
+      {blok.headline}
+     
+    </h3>
+
+
+  </div>
+
+  
+
+</div>

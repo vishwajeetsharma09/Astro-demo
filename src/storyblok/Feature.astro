@@ -1,0 +1,33 @@
+---
+import { storyblokEditable } from '@storyblok/astro'
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+import Image from './Image.astro';
+
+
+const { blok } = Astro.props
+console.log(blok);
+
+---
+
+<div
+  {...storyblokEditable(blok)}
+  class=' p-10 bg-[#d4d0ec] rounded-[5px] text-center'
+>
+  <h3 class='text-2xl text-[#000000] font-bold'>{blok.text}</h3>
+
+  {blok.columns?.map((columnBlok) => {
+    return (
+      <div class="p-4">
+      
+        {/* You can also render other content in each column */}
+        <StoryblokComponent blok={columnBlok} />
+      </div>
+    );
+  })}
+
+  
+  <!-- <h3 >{blok.text}</h3> -->
+  
+    
+</div>

@@ -1,0 +1,25 @@
+---
+import { storyblokEditable, useStoryblok, useStoryblokApi } from '@storyblok/astro'
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const { slug } = Astro.params;
+ 
+const story = await useStoryblok(
+  // The slug to fetch
+  `cdn/stories/${slug === undefined ? "home" : slug}`,
+  // The API options
+  {
+    version: "draft",
+  },
+  // The Bridge options (optional, if an empty object, null, or false are set, the API options will be considered automatically as far as applicable)
+  {},
+  // The Astro object (essential for the live preview functionality)
+  Astro
+);
+
+---
+
+<BaseLayout  {...storyblokEditable(story)} >
+  <StoryblokComponent blok={story.content} />
+</BaseLayout>

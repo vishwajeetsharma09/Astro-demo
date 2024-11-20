@@ -1,0 +1,19 @@
+---
+import { storyblokEditable } from '@storyblok/astro'
+
+const { blok } = Astro.props
+console.log(blok);
+
+---
+
+
+<img
+  src={blok?.image.filename}
+  class="bg-black"
+
+
+
+  loading='lazy'
+/>
+
+ 

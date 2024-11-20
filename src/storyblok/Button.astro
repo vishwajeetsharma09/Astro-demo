@@ -1,0 +1,13 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const {blok} = Astro.props 
+
+// console.log(blok)
+---
+<div  class=" m-1 flex items-center justify-center bg-white-900" {...storyblokEditable(blok)}>
+
+    
+    <a class="h-10 px-5 text-indigo-100  transition-colors  bg-indigo-700   hover:bg-indigo-800" href={blok.link?.cached_url || blok.link?.url}>{blok.text}</a>
+
+</div>

@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config'
+import vercel from '@astrojs/vercel/serverless';
 import storyblok from '@storyblok/astro'
 import { loadEnv } from 'vite'
 import tailwind from '@astrojs/tailwind'
@@ -38,5 +39,6 @@ export default defineConfig({
       https: true,
     },
   },
-  output:"server"
+  output: 'server',
+  adapter: vercel(),
 })
